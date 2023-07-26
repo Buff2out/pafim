@@ -1,5 +1,7 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UsersController.php";
+
 class RequestReciever
 {
     private static $urlList;
@@ -23,6 +25,10 @@ class RequestReciever
             case "login":
                 return json_encode(self::$urlList);
                 break;
+            case "users":
+//                echo " toProcessGet ";
+                return UsersController::showUsersListGet(self::$urlList);
+                break;
             case "":
                 return json_encode(self::$urlList);
                 break;
@@ -38,10 +44,10 @@ class RequestReciever
         self::$urlList = self::getUrlList();
         self::$requestData = self::getBody(self::getMethod());
         switch (self::$urlList[0]) {
-            case "0":
+            case "login":
                 return json_encode(self::$requestData);
                 break;
-            case "1":
+            case "register":
                 return json_encode(self::$requestData);
                 break;
         }

@@ -1,4 +1,5 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/services/AuthorizationService.php";
 
 class AuthorizationController
 {
@@ -6,7 +7,7 @@ class AuthorizationController
 //        return "pafim/profiles/register";
 //    }
 
-    static function loginUserPost(): string {
+    static function loginUserPost(stdClass $requestData): string {
         /*
         * итак, логин/регистрация такие: в сервисе
         * после всех процедур возвращаем токен и имя Фронту + данные с settings
@@ -23,10 +24,14 @@ class AuthorizationController
         * запросе дополнительно и данные профиля
         *
         */
-        return "pafim/login";
+        // * TODO возможно стоит добавить парсер stdClass $requestData 1 *
+        $authorizationService = new AuthorizationService();
+        return $authorizationService->getUserNameTokenDtoByEmailAndPassword($requestData);
     }
 
-    static function registerUserPost(): string {
-        return "pafim/register";
+    static function registerUserPost(stdClass $requestData): string {
+        // * TODO возможно стоит добавить парсер stdClass $requestData в class 2 *
+        $authorizationService = new AuthorizationService();
+        return $authorizationService->getUserNameTokenDtoByRegistrationData($requestData);
     }
 }

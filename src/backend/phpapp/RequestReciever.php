@@ -2,6 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UserController.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/ProductController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/AuthorizationController.php";
 
 class RequestReciever
 {
@@ -48,10 +49,10 @@ class RequestReciever
     {
         switch (self::$urlList[0]) {
             case "login":
-                return json_encode(self::$requestData);
+                return AuthorizationController::loginUserPost(self::$requestData);
                 break;
             case "register":
-                return json_encode(self::$requestData);
+                return AuthorizationController::registerUserPost(self::$requestData);
                 break;
         }
         return json_encode(self::$requestData);

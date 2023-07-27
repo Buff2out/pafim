@@ -2,14 +2,20 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/DatabaseConnector.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/repositories/AuthorizationRepository.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/dto/UserNameTokenDto.php";
 
 class AuthorizationService
 {
-    public function getUserIdByEmailAndPassword(stdClass $requestData) {
-        $databaseConnector = new DatabaseConnector();
-        $authorizationRepository = new AuthorizationRepository($databaseConnector);
+    private DatabaseConnector $databaseConnector;
+    public function __construct() {
+        $this->databaseConnector = new DatabaseConnector();
+    }
 
-        $responseFromDb = $authorizationRepository->findUserIdByEmailAndPassword($requestData->email, $requestData->password);
+    public function getUserNameTokenDtoByEmailAndPassword(stdClass $requestData) {
+//        $databaseConnector = new DatabaseConnector();
+        $authorizationRepository = new AuthorizationRepository($this->databaseConnector);
+
+        $responseFromDb = $authorizationRepository->findUserIdByEmailAndPassword($requestData->body->email, $requestData->body->password);
         if (is_null($responseFromDb))
         {
             echo http_response_code(400) . " input data incorrect\n";
@@ -18,7 +24,26 @@ class AuthorizationService
         // creating token
         $token = bin2hex(random_bytes(16));
         $authorizationRepository->putToken($responseFromDb, $token);
-        return $responseFromDb; // фронту токен не забыть вернуть
+        $userNameTokenDto = new UserNameTokenDto($responseFromDb, $token);
+        return json_encode($userNameTokenDto); // фронту токен не забыть вернуть
+    }
+
+    public function getUserNameTokenDtoByRegistrationData(stdClass $requestData) {
+//        $databaseConnector = new DatabaseConnector();
+        $authorizationRepository = new AuthorizationRepository($this->databaseConnector);
+
+//        $responseFromDb = $authorizationRepository->findUserIdByEmailAndPassword($requestData->email, $requestData->password);
+        $authorizationRepository->putNewUser($requestData->body->email, $requestData->body->name, hash("sha1", $requestData->body->password));
+//        if (is_null($responseFromDb))
+//        {
+//            echo http_response_code(400) . " input data incorrect\n";
+//            return null;
+//        }
+        // creating token
+//        $token = bin2hex(random_bytes(16));
+//        $authorizationRepository->putToken($responseFromDb, $token);
+//        $userNameTokenDto = new UserNameTokenDto($responseFromDb, $token);
+        return $this->getUserNameTokenDtoByEmailAndPassword($requestData); // фронту токен не забыть вернуть
     }
 
     public function getUserDataByToken($token) {

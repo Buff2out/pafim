@@ -34,4 +34,11 @@ class AuthorizationRepository
                  VALUES ('$user_id', '$token')"
         );
     }
+
+    public function putNewUser($email, $name, $password) {
+        $this->databaseConnector->connect->query(
+            "INSERT INTO users(name, email, password)
+                  VALUES('$name', '$email', '$password')"
+        );
+    }
 }

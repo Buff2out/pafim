@@ -7,8 +7,12 @@ class RequestReciever
 {
     private static $urlList;
     private static $requestData;
+    private static $token;
 
-    public static function toProcessRequest(): string {
+    public static function toProcessRequestMethod(): string {
+        self::$urlList = self::getUrlList();
+        self::$requestData = self::getBody(self::getMethod());
+        self::$token = explode(" ", getallheaders()['Authorization'])[1];
         switch (self::getMethod()) {
             case "GET":
                 return self::toProcessGet();
@@ -21,7 +25,7 @@ class RequestReciever
     }
 
     private static function toProcessGet(): string {
-        self::$urlList = self::getUrlList();
+
         switch (self::$urlList[0]) {
             case "products":
                 return ProductController::showProductsList();
@@ -37,13 +41,11 @@ class RequestReciever
                 return json_encode(self::$urlList);
                 break;
         }
-        return "jsonResponse";
+        return "bad request 400 statuscode (TODO)";
     }
 
     private static function toProcessPost(): string
     {
-        self::$urlList = self::getUrlList();
-        self::$requestData = self::getBody(self::getMethod());
         switch (self::$urlList[0]) {
             case "login":
                 return json_encode(self::$requestData);

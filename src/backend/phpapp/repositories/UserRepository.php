@@ -26,10 +26,10 @@ class UserRepository
 //        echo " findUsersListThreeFields ";
         $result = mysqli_fetch_all($this->databaseConnector->connect->query(
             "SELECT 
-    name, 
-    pub_access_token, 
-    transf_balances_chbx, 
-    transf_prices_chbx FROM users"
+                name, 
+                pub_access_token, 
+                transf_balances_chbx, 
+                transf_prices_chbx FROM users"
         ), MYSQLI_ASSOC);
         return $result;
     }

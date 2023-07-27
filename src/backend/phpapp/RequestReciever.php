@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UsersController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/ProductsController.php";
 
 class RequestReciever
 {
@@ -22,8 +23,8 @@ class RequestReciever
     private static function toProcessGet(): string {
         self::$urlList = self::getUrlList();
         switch (self::$urlList[0]) {
-            case "login":
-                return json_encode(self::$urlList);
+            case "products":
+                return ProductsController::showProductsList();
                 break;
             case "users":
 //                echo " toProcessGet ";

@@ -9,6 +9,6 @@ class UsersController
     static function showUsersListGet(array $urlList): string {
 //        echo " showUsersListGet ";
         self::$userService = new UserService();
-        return self::$userService->findUsersList();
+        return self::$userService->getUsersListIdNameEmailDto();
     }
 }

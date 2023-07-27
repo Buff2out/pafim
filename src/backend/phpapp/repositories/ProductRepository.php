@@ -1,8 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/DatabaseConnector.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/dto/UserIdNameEmailDto.php";
 
-class UserRepository
+class ProductRepository
 {
     private DatabaseConnector $databaseConnector;
     public function __construct(DatabaseConnector $databaseConnector)
@@ -12,11 +11,11 @@ class UserRepository
     }
 
 //    public $connect;
-    public function findUsersListIdNameEmail()
+    public function findAll()
     {
 //        echo " findUsersListThreeFields ";
         $result = mysqli_fetch_all($this->databaseConnector->connect->query(
-            "SELECT id, name, email FROM users"
+            "SELECT * FROM products"
         ), MYSQLI_ASSOC);
         return $result;
     }

@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/services/UserService.php";
 
-class UsersController
+class UserController
 {
     private static UserService $userService;
 

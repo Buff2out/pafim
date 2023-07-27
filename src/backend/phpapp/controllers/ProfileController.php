@@ -1,6 +1,6 @@
 <?php
 
-class ProfilesController
+class ProfileController
 {
     static function showProfileSettingsGet(): string {
         return "pafim/profiles/settings";

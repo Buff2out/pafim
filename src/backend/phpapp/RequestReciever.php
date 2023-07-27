@@ -1,7 +1,7 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UsersController.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/ProductsController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UserController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/ProductController.php";
 
 class RequestReciever
 {
@@ -24,11 +24,11 @@ class RequestReciever
         self::$urlList = self::getUrlList();
         switch (self::$urlList[0]) {
             case "products":
-                return ProductsController::showProductsList();
+                return ProductController::showProductsList();
                 break;
             case "users":
 //                echo " toProcessGet ";
-                return UsersController::showUsersListGet(self::$urlList);
+                return UserController::showUsersListGet(self::$urlList);
                 break;
             case "":
                 return json_encode(self::$urlList);

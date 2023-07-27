@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/services/ProductService.php";
 
-class ProductsController
+class ProductController
 {
     private static ProductService $productService;
 

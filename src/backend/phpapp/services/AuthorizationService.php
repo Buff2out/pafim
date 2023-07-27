@@ -15,7 +15,8 @@ class AuthorizationService
 //        $databaseConnector = new DatabaseConnector();
         $authorizationRepository = new AuthorizationRepository($this->databaseConnector);
 
-        $responseFromDb = $authorizationRepository->findUserIdByEmailAndPassword($requestData->body->email, $requestData->body->password);
+        $responseFromDb = $authorizationRepository->findUserIdAndNameByEmailAndPassword($requestData->body->email, hash("sha1", $requestData->body->password));
+
         if (is_null($responseFromDb))
         {
             echo http_response_code(400) . " input data incorrect\n";
@@ -23,8 +24,8 @@ class AuthorizationService
         }
         // creating token
         $token = bin2hex(random_bytes(16));
-        $authorizationRepository->putToken($responseFromDb, $token);
-        $userNameTokenDto = new UserNameTokenDto($responseFromDb, $token);
+        $authorizationRepository->putToken($responseFromDb["id"], $token);
+        $userNameTokenDto = new UserNameTokenDto($responseFromDb["name"], $token); //
         return json_encode($userNameTokenDto); // фронту токен не забыть вернуть
     }
 

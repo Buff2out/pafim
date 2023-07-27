@@ -11,9 +11,9 @@ class AuthorizationRepository
         $this->databaseConnector = $databaseConnector;
     }
 
-    public function findUserIdByEmailAndPassword(string $email, string $password) {
+    public function findUserIdAndNameByEmailAndPassword(string $email, string $password) {
         $userId = $this->databaseConnector->connect->query(
-            "SELECT id from users
+            "SELECT id, name from users
                 WHERE email='$email' AND password='$password'"
         )->fetch_assoc();
         return $userId;

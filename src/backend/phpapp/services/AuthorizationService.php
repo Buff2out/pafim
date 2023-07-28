@@ -6,6 +6,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/dto/UserNameTokenDto.php";
 
 class AuthorizationService
 {
+    //TODO а зачем в сервисах $databaseConnector ???
+    // чем я думал, он же тут лишний, он нужен только для repository.
     private DatabaseConnector $databaseConnector;
     public function __construct() {
         $this->databaseConnector = new DatabaseConnector();
@@ -40,7 +42,7 @@ class AuthorizationService
 //            echo http_response_code(400) . " input data incorrect\n";
 //            return null;
 //        }
-        // creating token
+// creating token
 //        $token = bin2hex(random_bytes(16));
 //        $authorizationRepository->putToken($responseFromDb, $token);
 //        $userNameTokenDto = new UserNameTokenDto($responseFromDb, $token);
@@ -48,18 +50,18 @@ class AuthorizationService
     }
 
     public function getUserDataByToken($token) {
-        $databaseConnector = new DatabaseConnector();
+//        $databaseConnector = new DatabaseConnector();
         if (is_null($token))
         {
             return null; // can't get token from headers
         }
-        $authorizationRepository = new AuthorizationRepository($databaseConnector);
+        $authorizationRepository = new AuthorizationRepository($this->databaseConnector);
         $responseFromDb = $authorizationRepository->findUserNameByToken($token);
         if (is_null($responseFromDb))
         {
             return null; // invalid token or doesn't exist in DB;
         }
-        return $responseFromDb;
+        return json_encode($responseFromDb);
 
     }
 }

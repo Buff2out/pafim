@@ -29,11 +29,11 @@ class RequestReciever
 
         switch (self::$urlList[0]) {
             case "products":
-                return ProductController::showProductsList();
+                return ProductController::showProductsList(self::$token);
                 break;
             case "users":
 //                echo " toProcessGet ";
-                return UserController::showUsersListGet(self::$urlList);
+                return UserController::showUsersListGet(self::$token);
                 break;
             case "":
                 return json_encode(self::$urlList);

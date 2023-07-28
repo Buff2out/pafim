@@ -6,8 +6,8 @@ class ProductController
 {
     private static ProductService $productService;
 
-    static function showProductsList(): string {
+    static function showProductsList($token): string {
         self::$productService = new ProductService();
-        return self::$productService->getProductsListIdNameEmailDto();
+        return self::$productService->getProductsListIdNameEmailDto($token);
     }
 }

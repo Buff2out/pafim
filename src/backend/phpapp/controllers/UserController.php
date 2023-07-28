@@ -6,9 +6,9 @@ class UserController
 {
     private static UserService $userService;
 
-    static function showUsersListGet(array $urlList): string {
+    static function showUsersListGet($token): string {
 //        echo " showUsersListGet ";
         self::$userService = new UserService();
-        return self::$userService->getUsersListIdNameEmailDto();
+        return self::$userService->getUsersListIdNameEmailDto($token);
     }
 }

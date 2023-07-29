@@ -3,6 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/DatabaseConnector.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/repositories/AuthorizationRepository.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/dto/UserNameTokenDto.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/services/ProductService.php";
 
 class AuthorizationService
 {
@@ -28,6 +29,17 @@ class AuthorizationService
         $token = bin2hex(random_bytes(16));
         $authorizationRepository->putToken($responseFromDb["id"], $token);
         $userNameTokenDto = new UserNameTokenDto($responseFromDb["name"], $token); //
+
+//        $productService = new ProductService();
+//        // сервисы по идее не должны возвращать Json формат(string),
+//        // а должны возвращать объект,
+//        // и лишние json_decode - это да потеря производительности,
+//        // но так как я тороплюсь,
+//        // то оставлю пока так. Так же и с dto'шками,
+//        // которые я не успею доделать и обойдусь
+//        // stdClass'ом
+//        $userNameTokenDto->products = json_decode($productService->getProductsListIdNameEmailDto($token));
+
         return json_encode($userNameTokenDto); // фронту токен не забыть вернуть
     }
 

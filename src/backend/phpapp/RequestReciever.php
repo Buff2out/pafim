@@ -40,11 +40,9 @@ class RequestReciever
             case "settings":
                 return AccountSettingsController::showAccountSettingsGet(self::$token);
                 break;
-            case "register":
-                return json_encode(self::$urlList);
-                break;
         }
-        return "bad request 400 statuscode (TODO)";
+        // TODO обработать в дальнейшем корректно статускод
+        return "bad request 400 statuscode ";
     }
 
     private static function toProcessPost(): string
@@ -55,6 +53,9 @@ class RequestReciever
                 break;
             case "register":
                 return AuthorizationController::registerUserPost(self::$requestData);
+                break;
+            case "settings":
+                return AccountSettingsController::setProfileSettingsPost(self::$requestData, self::$token);
                 break;
         }
         return json_encode(self::$requestData);

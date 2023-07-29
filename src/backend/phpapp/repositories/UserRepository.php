@@ -8,7 +8,7 @@ class UserRepository
     public function __construct(DatabaseConnector $databaseConnector)
     {
         // выяснить доступ по ссылке на объект или копируется из констракта
-        $this->databaseConnector = $databaseConnector;
+        $this->databaseConnector = new DatabaseConnector();
     }
 
 //    public $connect;

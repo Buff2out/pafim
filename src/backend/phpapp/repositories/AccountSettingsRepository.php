@@ -1,12 +1,14 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/DatabaseConnector.php";
+
 class AccountSettingsRepository
 {
     private DatabaseConnector $databaseConnector;
-    public function __construct(DatabaseConnector $databaseConnector)
+    public function __construct()
     {
         // выяснить доступ по ссылке на объект или копируется из констракта
-        $this->databaseConnector = $databaseConnector;
+        $this->databaseConnector = new DatabaseConnector();
     }
     public function findUserSettingsByToken($token) {
         $userSettings = $this->databaseConnector->connect->query(

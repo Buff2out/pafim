@@ -3,6 +3,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UserController.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/ProductController.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/AuthorizationController.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/AccountSettingsController.php";
+
 
 class RequestReciever
 {
@@ -35,8 +37,8 @@ class RequestReciever
 //                echo " toProcessGet ";
                 return UserController::showUsersListGet(self::$token);
                 break;
-            case "":
-                return json_encode(self::$urlList);
+            case "settings":
+                return AccountSettingsController::showAccountSettingsGet(self::$token);
                 break;
             case "register":
                 return json_encode(self::$urlList);

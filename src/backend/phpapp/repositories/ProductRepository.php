@@ -1,4 +1,5 @@
 <?php
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/DatabaseConnector.php";
 
 class ProductRepository
@@ -7,7 +8,7 @@ class ProductRepository
     public function __construct(DatabaseConnector $databaseConnector)
     {
         // выяснить доступ по ссылке на объект или копируется из констракта
-        $this->databaseConnector = $databaseConnector;
+        $this->databaseConnector = new DatabaseConnector();
     }
 
 //    public $connect;

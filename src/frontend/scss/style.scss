@@ -1,58 +1,12 @@
 @import "init.scss";
 
-dl,
-ol,
-ul {
-    margin-bottom: 0;
+.container {
+    height: 30vh;
 }
 
-a {
-    cursor: pointer;
+.custom-header {
+    height: 30vh;
 }
-
-.main {
-    min-height: 93vh;
-}
-
-.navbar {
-    position: fixed;
-    width: 100%;
-    z-index: 3;
-}
-
-.main-container {
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, .15);
-    padding-top: 55px;
-}
-
-.card-footer {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    p {
-        margin-bottom: 0;
-    }
-
-}
-
-.page-link {
-    padding: 12px 12px;
-}
-
-.footer {
-    padding: 20px;
-}
-
-.dish-image {
-    width: 20%;
-}
-
-
-
-
-
 
 // apply to /item/index.html
 

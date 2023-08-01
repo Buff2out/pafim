@@ -22,8 +22,8 @@ class AuthorizationService
 
         if (is_null($responseFromDb))
         {
-            echo http_response_code(400) . " input data incorrect\n";
-            return null;
+//             echo http_response_code(400) . " input data incorrect\n";
+            return json_encode(null);
         }
         // creating token
         $token = bin2hex(random_bytes(16));

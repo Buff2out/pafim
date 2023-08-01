@@ -11,6 +11,21 @@
 
 .custom-profile {
     width: 30vw;
+    border: solid black 3px;
+    border-radius: 25px;
+}
+
+.user-header {
+    width: 100%;
+    padding-left: 200px;
+    padding-bottom: 15px;
+    font-size: 40px;
+    color: black;
+}
+
+.nav-link {
+    color: black;
+    font-size: 30px;
 }
 
 .custom-navbar {
@@ -41,6 +56,21 @@
 
 .main-container {
     margin-top: 170px;
+}
+
+tr {
+    padding: 10px 10px 10px 10px;
+}
+
+td {
+    padding: 10px 10px 10px 10px;
+}
+tbody {
+    text-align: center;
+}
+table {
+    width: 100%;
+
 }
 
 // apply to /item/index.html

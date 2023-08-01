@@ -47,7 +47,6 @@ new Promise(function (resolve, reject) {
             resolve(sendData(getDataFromForms(), "http://phpapp/login", 'POST'))
         }).then(function(responseJson) {
             if (undefined !== responseJson?.name) { // удачная попытка входа
-
                 // localStorage.setItem('token', responseJson.token);
                 window.location = 'http://localhost:8848/users.html';
             } //

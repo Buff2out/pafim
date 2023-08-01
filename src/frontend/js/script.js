@@ -12,21 +12,21 @@ async function sendData(params=null, link="http://phpapp/users", rMethod='GET') 
         const response = await fetch(`${link}`, {
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             method: rMethod,
-            body: (JSON.stringify(params)),
-            //'Authorization': `Bearer ${token}`
+            body: (JSON.stringify(params))
         });
         return await response.json();
     } else if (null != token) {
         const response = await fetch(`${link}`, {
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             method: rMethod,
-            'Authorization': `Bearer ${token}`
         });
         console.log(response.json());
         return await response.json();
@@ -34,9 +34,10 @@ async function sendData(params=null, link="http://phpapp/users", rMethod='GET') 
         const response = await fetch(`${link}`, {
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            method: rMethod,
+            method: rMethod
         });
         return await response.json();
     }

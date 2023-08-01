@@ -66,15 +66,15 @@ function addValuesToProducts(responseJson) {
 }
 
 new Promise(function (resolve, reject) {
-    resolve(sendData(null, "http://phpapp/users", 'GET'))
+    resolve(sendData(null, "http://phpapp/products", 'GET'))
 }).then(function(responseJson) {
     console.log(localStorage.getItem('token'));
     if (responseJson.account !== null) {
-        if (window.location.href !== 'http://localhost:8848/users.html') {
+        if (window.location.href !== 'http://localhost:8848/products.html') {
             console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ");
-            window.location = 'http://localhost:8848/users.html'; //
+            window.location = 'http://localhost:8848/products.html'; //
         }
-        addValuesToUsers(responseJson);
+        addValuesToProducts(responseJson);
     }
 });
 
@@ -98,23 +98,23 @@ new Promise(function (resolve, reject) {
 //         }
 //     });
 // });
-
-// uBtnPr.addEventListener("click", event => {
-//     new Promise(function (resolve, reject) {
-//         resolve(sendData(null, "http://phpapp/users", 'GET'))
-//     }).then(function(responseJson) {
-//         if (responseJson.account !== null) {
-//             if (window.location.href !== 'http://localhost:8848/users.html') {
-//                 // console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ")
-//                 window.location = 'http://localhost:8848/users.html'; //
-//             }
-//             addValuesToUsers(responseJson);
-//         } else {
-//             window.location = 'http://localhost:8848'; // перенаправление на логин
-//         }
-//     });
-// });
-
+//
+// // uBtnPr.addEventListener("click", event => {
+// //     new Promise(function (resolve, reject) {
+// //         resolve(sendData(null, "http://phpapp/users", 'GET'))
+// //     }).then(function(responseJson) {
+// //         if (responseJson.account !== null) {
+// //             if (window.location.href !== 'http://localhost:8848/users.html') {
+// //                 // console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ")
+// //                 window.location = 'http://localhost:8848/users.html'; //
+// //             }
+// //             addValuesToUsers(responseJson);
+// //         } else {
+// //             window.location = 'http://localhost:8848'; // перенаправление на логин
+// //         }
+// //     });
+// // });
+//
 // productsBtn = document.querySelector(".productsButton");
 // let pBtnUs = document.querySelector("#pBtnUs");
 // let pBtnPr = document.querySelector("#pBtnPr");
@@ -136,44 +136,44 @@ new Promise(function (resolve, reject) {
 //         }
 //     });
 // });
-
-// pBtnPr.addEventListener("click", event => {
-//     console.log("got it");
-//     new Promise(function (resolve, reject) {
-//         resolve(sendData(null, "http://phpapp/products", 'GET'))
-//     }).then(function(responseJson) {
-//         if (responseJson.account !== null) {
-//             // в целом, можно products в отельную переменную вынести и будет проще,
-//             // но некогда тестить
-//             if (window.location.href !== 'http://localhost:8848/products.html') {
-//                 // console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ")
-//                 window.location = 'http://localhost:8848/products.html'; //
-//             }
-//             addValuesToProducts(responseJson);
-//         } else {
-//             window.location = 'http://localhost:8848'; // перенаправление на логин
-//         }
-//     });
-// });
-
-submitLogIn = document.querySelector("#signIn");
-submitLogIn.addEventListener("click", () => {
-    user = getDataFromForms();
-    new Promise(function (resolve, reject) {
-        resolve(sendData(getDataFromForms(), "http://phpapp/login", 'POST'))
-    }).then(function(responseJson) {
-        if (undefined !== responseJson?.name) { // удачная попытка входа
-            localStorage.setItem('token', responseJson.token);
-            window.location = 'http://localhost:8848/users.html';
-            addValuesToUsers(responseJson);
-        } //
-    });
-    // let responsePromice = sendData(getDataFromForms(), "http://phpapp/users", 'POST')
-    // if (responseJson.token) {
-    //     localStorage.setItem('token', responseObj.token);
-    //     console.log(localStorage.getItem('token')); // read
-    //     history.pushState(null, null, ``);
-    //     location.replace("/");
-    // }
-});
-
+//
+// // pBtnPr.addEventListener("click", event => {
+// //     console.log("got it");
+// //     new Promise(function (resolve, reject) {
+// //         resolve(sendData(null, "http://phpapp/products", 'GET'))
+// //     }).then(function(responseJson) {
+// //         if (responseJson.account !== null) {
+// //             // в целом, можно products в отельную переменную вынести и будет проще,
+// //             // но некогда тестить
+// //             if (window.location.href !== 'http://localhost:8848/products.html') {
+// //                 // console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ")
+// //                 window.location = 'http://localhost:8848/products.html'; //
+// //             }
+// //             addValuesToProducts(responseJson);
+// //         } else {
+// //             window.location = 'http://localhost:8848'; // перенаправление на логин
+// //         }
+// //     });
+// // });
+//
+// // submitLogIn = document.querySelector("#signIn");
+// // submitLogIn.addEventListener("click", () => {
+// //     user = getDataFromForms();
+// //     new Promise(function (resolve, reject) {
+// //         resolve(sendData(getDataFromForms(), "http://phpapp/login", 'POST'))
+// //     }).then(function(responseJson) {
+// //         if (undefined !== responseJson?.name) { // удачная попытка входа
+// //             localStorage.setItem('token', responseJson.token);
+// //             window.location = 'http://localhost:8848/users.html';
+// //             addValuesToUsers(responseJson);
+// //         } //
+// //     });
+// //     // let responsePromice = sendData(getDataFromForms(), "http://phpapp/users", 'POST')
+// //     // if (responseJson.token) {
+// //     //     localStorage.setItem('token', responseObj.token);
+// //     //     console.log(localStorage.getItem('token')); // read
+// //     //     history.pushState(null, null, ``);
+// //     //     location.replace("/");
+// //     // }
+// // });
+//

@@ -78,7 +78,7 @@ new Promise(function (resolve, reject) {
     }
 });
 
-//
+
 // // localStorage.removeItem('token');
 // let usersButton = document.querySelector(".usersButton");
 // let uBtnUs = document.querySelector("#uBtnUs");
@@ -156,24 +156,24 @@ new Promise(function (resolve, reject) {
 //     });
 // });
 
-submitLogIn = document.querySelector("#signIn");
-submitLogIn.addEventListener("click", () => {
-    user = getDataFromForms();
-    new Promise(function (resolve, reject) {
-        resolve(sendData(getDataFromForms(), "http://phpapp/login", 'POST'))
-    }).then(function(responseJson) {
-        if (undefined !== responseJson?.name) { // удачная попытка входа
-            localStorage.setItem('token', responseJson.token);
-            window.location = 'http://localhost:8848/users.html';
-            addValuesToUsers(responseJson);
-        } //
-    });
-    // let responsePromice = sendData(getDataFromForms(), "http://phpapp/users", 'POST')
-    // if (responseJson.token) {
-    //     localStorage.setItem('token', responseObj.token);
-    //     console.log(localStorage.getItem('token')); // read
-    //     history.pushState(null, null, ``);
-    //     location.replace("/");
-    // }
-});
+// submitLogIn = document.querySelector("#signIn");
+// submitLogIn.addEventListener("click", () => {
+//     user = getDataFromForms();
+//     new Promise(function (resolve, reject) {
+//         resolve(sendData(getDataFromForms(), "http://phpapp/login", 'POST'))
+//     }).then(function(responseJson) {
+//         if (undefined !== responseJson?.name) { // удачная попытка входа
+//             localStorage.setItem('token', responseJson.token);
+//             window.location = 'http://localhost:8848/users.html';
+//             addValuesToUsers(responseJson);
+//         } //
+//     });
+//     // let responsePromice = sendData(getDataFromForms(), "http://phpapp/users", 'POST')
+//     // if (responseJson.token) {
+//     //     localStorage.setItem('token', responseObj.token);
+//     //     console.log(localStorage.getItem('token')); // read
+//     //     history.pushState(null, null, ``);
+//     //     location.replace("/");
+//     // }
+// });
 

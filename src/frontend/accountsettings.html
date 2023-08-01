@@ -56,20 +56,19 @@
     </symbol>
 </svg>
 
-<main class="main">
-    <div class="container main-container">
-        <form class="login-form pb-3">
-            <h1 class="h1">Авторизация</h1>
-            <label for="inputEmail" class="col-sm-2 col-form-label custom-form">Email</label>
-            <input type="email" class="form-control" id="inputEmail">
+<main>
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 custom-header">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none custom-profile">
+            <svg class="bi me-2 d-flex" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4 d-flex">login</span>
+        </a>
 
-            <label for="inputPassword" class="col-sm-2 col-form-label custom-form">Пароль</label>
-            <input type="password" class="form-control" id="inputPassword">
-<!--            <p class="text-danger pt-3 visually-hidden" id="crdsText-danger">Некорректный Email или Пароль</p>-->
-            <div class="signin-wrapper"><div type="submit" class="btn btn-primary mt-3 d-flex custom-signin"><h3>Вход</h3></div></div>
-            <div class="signin-wrapper"><div type="submit" class="btn btn-primary mt-3 d-flex custom-signin"><h3>Регистрация</h3></div></div>
-        </form>
-    </div>
+        <ul class="nav nav-pills d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none custom-navbar">
+            <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Настройки</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Товары</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Пользователи</a></li>
+        </ul>
+    </header>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

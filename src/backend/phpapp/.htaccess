@@ -1,5 +1,9 @@
 <ifModule mod_rewrite.c>
 	RewriteEngine on
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    Header set Access-Control-Allow-Headers "Accept, Accept-Datetime, Accept-Language, App-Version, Authorization, Cache-Control, Content-Type, Date, Device-Token, Location, Origin, Time-Zone, User-Agent, X-Requested-With"
+    Header set Access-Control-Allow-Credentials "true"
 	# RewtiteBase /
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d

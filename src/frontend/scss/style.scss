@@ -6,6 +6,41 @@
 
 .custom-header {
     height: 30vh;
+    width: 100%;
+}
+
+.custom-profile {
+    width: 30vw;
+}
+
+.custom-navbar {
+    width: 30vw;
+}
+
+.custom-signin {
+    text-align: center;
+    width: 55%;
+}
+
+.signin-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-signin h3 {
+    text-align: center;
+}
+
+.h1 {
+    text-align: center;
+}
+
+.custom-form {
+    width: 50%;
+}
+
+.main-container {
+    margin-top: 170px;
 }
 
 // apply to /item/index.html

@@ -65,14 +65,30 @@ function addValuesToProducts(responseJson) {
     }
 }
 
+function addValuesToAccountSettings(responseJson) { // TODO доделать из шаблона products
+    let accountName = document.querySelector(".user-header");
+    accountName.textContent = responseJson.account.name;
+    let productIds = document.querySelectorAll(".productId");
+    let productNames = document.querySelectorAll(".productName");
+    let productEmails = document.querySelectorAll(".productBalance");
+    for (let i = 0; i < 5; i++) {
+        productIds[i].textContent = responseJson.products[i].id;
+        productNames[i].textContent = responseJson.products[i].name;
+        productEmails[i].textContent = responseJson.products[i].balance;
+        // userIds[i].textContent = "responseJson.users[i].id";
+        // userNames[i].textContent = "responseJson.users[i].name";
+        // userEmails[i].textContent = "responseJson.users[i].email";
+    }
+}
+
 new Promise(function (resolve, reject) {
     resolve(sendData(null, "http://phpapp/settings", 'GET'))
 }).then(function(responseJson) {
     console.log(localStorage.getItem('token'));
     if (responseJson.account !== null) {
-        if (window.location.href !== `${document.location.protocol}//${document.location.host}/settings.html`) {
+        if (window.location.href !== `${document.location.protocol}//${document.location.host}/accountsettings.html`) {
             // console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ");
-            window.location = `${document.location.protocol}//${document.location.host}/settings.html`; //
+            window.location = `${document.location.protocol}//${document.location.host}/accountsettings.html`; //
         }
         addValuesToAccountSettings(responseJson);
     }

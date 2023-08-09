@@ -70,9 +70,9 @@ new Promise(function (resolve, reject) {
 }).then(function(responseJson) {
     console.log(localStorage.getItem('token'));
     if (responseJson.account !== null) {
-        if (window.location.href !== 'http://localhost:8848/users.html') {
+        if (window.location.href !== `${document.location.protocol}//${document.location.host}/users.html`) {
             console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ");
-            window.location = 'http://localhost:8848/users.html'; //
+            window.location = `${document.location.protocol}//${document.location.host}/users.html`// 'http://localhost:8848/users.html'; //
         }
         addValuesToUsers(responseJson);
     }
@@ -164,7 +164,7 @@ submitLogIn.addEventListener("click", () => {
     }).then(function(responseJson) {
         if (undefined !== responseJson?.name) { // удачная попытка входа
             localStorage.setItem('token', responseJson.token);
-            window.location = 'http://localhost:8848/users.html';
+            window.location = `${document.location.protocol}//${document.location.host}/users.html`;
             addValuesToUsers(responseJson);
         } //
     });

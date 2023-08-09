@@ -70,9 +70,9 @@ new Promise(function (resolve, reject) {
 }).then(function(responseJson) {
     console.log(localStorage.getItem('token'));
     if (responseJson.account !== null) {
-        if (window.location.href !== 'http://localhost:8848/products.html') {
+        if (window.location.href !== `${document.location.protocol}//${document.location.host}/products.html`) {
             console.log("GGGGGGGGGDFJJJJJJKFNWOEIJWOEIRJ");
-            window.location = 'http://localhost:8848/products.html'; //
+            window.location = `${document.location.protocol}//${document.location.host}/products.html`; //
         }
         addValuesToProducts(responseJson);
     }
